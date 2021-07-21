@@ -1,5 +1,5 @@
 class ExpensesController < ApplicationController
-    before_action :authorized
+    # before_action :authorized
 
     def index
         user = User.find_by(id: session[:user_id])

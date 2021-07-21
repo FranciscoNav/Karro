@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 2021_07_16_002433) do
     t.string "name"
     t.integer "cost"
     t.date "date"
+    t.integer "user_id"
+    t.integer "car_id"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

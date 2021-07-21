@@ -1,10 +1,10 @@
 class User < ApplicationRecord
-    validates :username, presence: :true
-    validates :username, uniqueness: { case_sensitive: true }
+    validates :name, presence: :true
+    validates :name, uniqueness: { case_sensitive: true }
     
     has_secure_password
     
     has_many :expenses
-    has_many :car, through: :expenses
-    has_many :category, through: :expenses
+    has_many :cars, through: :expenses
+    has_many :categories, through: :expenses
 end

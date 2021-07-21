@@ -1,0 +1,6 @@
+Delete this when done 
+
+{expenseFormFlag ? <ExpenseForm /> : <button className="button" onClick={() => setExpenseFormFlag(true)} formFlag={expenseFormFlag}>Let's get started</button>}
+
+NarBar Props.user:
+{id: 1, name: "francisco", password_digest: "$2a$12$zpzAJu", created_at: "2021-07-17T22:17:31.512Z", updated_at: "2021-07-17T22:17:31.512Z"}

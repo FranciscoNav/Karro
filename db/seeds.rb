@@ -5,8 +5,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# expense.create ([{
+# user = User.find_by(id:"1")
+
+# user.category.create ([{
 #     name: "tire rotation",
-#     cost: 80,
-#     date: 2021-07-16,
 # }])
+
