@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import CarForm from './CarForm';
+import CarCard from './CarCard';
 
 const CarList = () => {
     const [cars, setCars] = useState([])
-    const [carFormFlag, setCarFormFlag] = useState(false)
     const [error, setError] = useState("")
+    const [carFormFlag, setCarFormFlag] = useState(false)
 
     useEffect(() => {
         fetch("/cars")
@@ -40,21 +40,17 @@ const CarList = () => {
 
     const handleTest = () =>{
         debugger
-        // const idk = cars.map( c => {c.make})
-        // console.log("carMake", idk)
+        console.log("carList test")
     }
 
-    const carList = cars.map( c => <li>{c.make}</li>)
+    const carList = cars.map( c => <CarCard  year={c.year} make={c.make} model={c.model} id={c.id}/>)
 
     return(
         <div>
             <h2>Your Vehicles</h2>
-            <ol>
-                {carList}
-            </ol>
-            {carFormFlag ? <CarForm addCar={addCar}/> : <button className="button" onClick={() => setCarFormFlag(true)} formFlag={carFormFlag}>lets get stated</button>}
+            {carList}
             <br/>
-            <button className ="test" onClick={handleTest}>Test button</button>
+            <button className ="test" onClick={handleTest}>Test - carList</button>
         </div>
     )
 

@@ -26,6 +26,16 @@ body{
   box-shadow: 3px 4px #2c80cf
 }
 
+.card {
+  background-color: rgb(215, 216, 221);
+  text-align: center;
+  border: rgb(73, 71, 71) solid 1px;
+  padding: 1rem;
+  height: auto;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px #cf2cb9
+}
+
 .test {
   position: relative;
   background-color: #c22a37;

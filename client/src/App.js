@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import CarList from './components/CarList';
+import Expenses from './components/Expenses';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -59,12 +60,11 @@ function App() {
     <div className="App">
       <Navbar user={user} loggedIn={loggedIn} logoutUser={logoutUser} loginError={loginError}/>
       <Switch>
-        {/* <Route exact path="/" component={Home}/> */}
         <Route exact path="/" render={routerProps => <Home {...routerProps} loginUser={LoginUser} loggedIn={loggedIn} user={user} />}/>
         <Route exact path="/signup" render={routerProps => <Signup {...routerProps} loginUser={LoginUser}/>}/>
         <Route exact path="/login" render={routerProps => <Login {...routerProps} loginUser={LoginUser} />}/>
         <Route exact path="/cars" render={routerProps => <CarList {...routerProps} user={user} loggedIn={loggedIn}/>}/>
-        {/* <Route exact path="/expenses/:id"  component={Expense}/> */}
+        <Route exact path="cars/:car_id/expenses"  component={Expenses}/>
       </Switch>
       
     </div>

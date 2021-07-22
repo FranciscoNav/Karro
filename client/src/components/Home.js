@@ -17,7 +17,7 @@ const Home = (props) => {
                 </Link>
                 <br/>
                 <br/>
-                <button className="test" onClick={handletest}>test</button>
+                <button className="test" onClick={handletest}>test -home</button>
             </div>
         )
     } else{
