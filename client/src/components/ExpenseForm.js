@@ -37,29 +37,25 @@ const ExpenseForm = ({addExp, setExpFormFlag}) => {
         //     car_id: car_id
         // })
         
-        //adjust strong params
         addExp({
-            make: make,
-            model: model,
-            year: year,
-            expenses: [{
+            expense:{
                 name: name,
-                cost: model,
-                date: date
-            }]
+                cost: cost,
+                date: date,
+                car_attributes: {
+                    make: make,
+                    model: model,
+                    year: year,
+                }
+            }
         })
 
-        console.log('expense form')
         setExpFormFlag(false)
     }
 
     return (
         <div>
             <form className="form" onSubmit={handleExpSubmit}>
-                {/* <select name="selectList" id="selectList">
-                    <option value="option 1">Option 1</option>
-                    <option value="option 2">Option 2</option>
-                </select> */}
                 {carToggle? 
                     <div>
                         <label>Make</label>
@@ -72,7 +68,7 @@ const ExpenseForm = ({addExp, setExpFormFlag}) => {
                         <br/>
                         <label>Year</label>
                         <br/>
-                        <input type="text" id="name" value={year} onChange={(e) => setYear(e.target.value)}></input>
+                        <input type="number" id="name" value={year} onChange={(e) => setYear(e.target.value)}></input>
                     </div>
                     : 
                     <div>
@@ -90,12 +86,12 @@ const ExpenseForm = ({addExp, setExpFormFlag}) => {
                 <br/>
                 <label>Cost</label>
                 <br/>
-                <input type="text" id="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
+                <input type="number" id="cost" value={cost} onChange={(e) => setCost(e.target.value)}></input>
                 <br/>
                 <br/>
                 <label>Date</label>
                 <br/>
-                <input type="text" id="date" value={date} onChange={(e) => setDate(e.target.value)}></input>
+                <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)}></input>
                 <br/>
                 <br/>
                 <input className="submit-button" type="submit"/>

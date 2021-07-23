@@ -9,6 +9,7 @@ class ExpensesController < ApplicationController
 
     def create
         user = User.find_by(id: session[:user_id])
+        # byebug
         expense = user.expenses.create(expense_params)
         if expense.valid?
             render json: expense, status: :created
@@ -52,7 +53,7 @@ class ExpensesController < ApplicationController
     private 
 
     def expense_params
-        params.permit(:name, :cost, :date)
+        params.require(:expense).permit(:name, :cost, :date, :car_id, car_attributes: [:year, :make, :model])
     end
 
     def authorized

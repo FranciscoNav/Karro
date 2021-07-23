@@ -18,17 +18,11 @@ const Expenses = (props) => {
           })
     }, []);
 
-    const expList = expenses.map( e => <p>{e.name} {e.cost}</p>)
-
-    const handleTest = () =>{
-        debugger
-        console.log("props?=",expenses)
-    }
+    const expList = expenses.map( e => <p>{e.name} ${e.cost} {e.date}</p>)
 
     return (
         <div>
             {expList}
-            <button className ="test" onClick={handleTest}>test - Expenses</button>
         </div>
     )
 }

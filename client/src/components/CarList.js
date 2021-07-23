@@ -20,13 +20,13 @@ const CarList = () => {
           })
     }, []);
 
-    const addExp = (Exp) =>{
-        fetch("/cars",{
+    const addExp = (exp) =>{
+        fetch("/expenses",{
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
-            body:JSON.stringify(Exp)
+            body:JSON.stringify(exp)
         })
         .then(r => r.json())
         .then(data => {
@@ -35,6 +35,7 @@ const CarList = () => {
             }else{
                 setCars([...cars, data])
                 setExpFormFlag(false)
+                console.log("else", data.error)
             }
         })
     }
