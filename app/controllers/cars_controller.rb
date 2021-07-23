@@ -11,6 +11,7 @@ class CarsController < ApplicationController
         user = User.find_by(id: session[:user_id])
         car = user.cars.create(car_params)
         if car
+            byebug
             render json: car, status: :created
         else
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity

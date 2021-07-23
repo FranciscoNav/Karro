@@ -6,7 +6,7 @@ const Expenses = (props) => {
     // const [carFormFlag, setCarFormFlag] = useState(false)
 
     useEffect(() => {
-        fetch(`cars/${props.id}/expenses`)
+        fetch(`/cars/${props.match.params.car_id}/expenses`)
           .then((r) => r.json())
           .then(data => {
             console.log(`fetch all expenses`, data)
@@ -18,10 +18,17 @@ const Expenses = (props) => {
           })
     }, []);
 
-    
+    const expList = expenses.map( e => <p>{e.name} {e.cost}</p>)
+
+    const handleTest = () =>{
+        debugger
+        console.log("props?=",expenses)
+    }
+
     return (
         <div>
-            <button className ="test">Edit</button>
+            {expList}
+            <button className ="test" onClick={handleTest}>test - Expenses</button>
         </div>
     )
 }

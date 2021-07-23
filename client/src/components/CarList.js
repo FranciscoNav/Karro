@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import CarCard from './CarCard';
+import ExpenseForm from './ExpenseForm'
 
 const CarList = () => {
     const [cars, setCars] = useState([])
     const [error, setError] = useState("")
-    const [carFormFlag, setCarFormFlag] = useState(false)
+    const [expFormFlag, setExpFormFlag] = useState(false)
 
     useEffect(() => {
         fetch("/cars")
@@ -19,13 +20,13 @@ const CarList = () => {
           })
     }, []);
 
-    const addCar = (car) =>{
+    const addExp = (Exp) =>{
         fetch("/cars",{
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
-            body:JSON.stringify(car)
+            body:JSON.stringify(Exp)
         })
         .then(r => r.json())
         .then(data => {
@@ -33,14 +34,9 @@ const CarList = () => {
                 alert("Please fill out the form completely. There should be at least one character in each text box.");
             }else{
                 setCars([...cars, data])
-                setCarFormFlag(false)
+                setExpFormFlag(false)
             }
         })
-    }
-
-    const handleTest = () =>{
-        debugger
-        console.log("carList test")
     }
 
     const carList = cars.map( c => <CarCard  year={c.year} make={c.make} model={c.model} id={c.id}/>)
@@ -50,11 +46,9 @@ const CarList = () => {
             <h2>Your Vehicles</h2>
             {carList}
             <br/>
-            <button className ="test" onClick={handleTest}>Test - carList</button>
+            {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
         </div>
     )
-
-    
 }
 
 export default CarList;

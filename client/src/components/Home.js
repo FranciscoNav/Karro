@@ -10,7 +10,7 @@ const Home = (props) => {
     if (props.loggedIn){
         return (
             <div>
-                <h1>Hello {props.user.name}</h1>
+                <h1>Hello to Karro {props.user.name}!</h1>
                 <br/>
                 <Link to="/cars">
                     <button className="button">View Vehicles</button>

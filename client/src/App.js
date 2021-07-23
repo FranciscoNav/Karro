@@ -64,7 +64,7 @@ function App() {
         <Route exact path="/signup" render={routerProps => <Signup {...routerProps} loginUser={LoginUser}/>}/>
         <Route exact path="/login" render={routerProps => <Login {...routerProps} loginUser={LoginUser} />}/>
         <Route exact path="/cars" render={routerProps => <CarList {...routerProps} user={user} loggedIn={loggedIn}/>}/>
-        <Route exact path="cars/:car_id/expenses"  component={Expenses}/>
+        <Route path="/cars/:car_id/expenses"  component={Expenses}/>
       </Switch>
       
     </div>
