@@ -6,16 +6,6 @@ body{
   background: linear-gradient(0.25turn, #5f5f5f, #cccccc, #696969);
 }
 
-.sign-up {
-  background-color: rgb(215, 216, 221);
-  text-align: center;
-  border: rgb(73, 71, 71) solid 1px;
-  padding: 1rem;
-  height: auto;
-  margin: 1rem 2rem;
-  box-shadow: 3px 4px #2c80cf
-}
-
 .form {
   background-color: rgb(215, 216, 221);
   text-align: center;
@@ -34,6 +24,16 @@ body{
   height: auto;
   margin: 1rem 2rem;
   box-shadow: 3px 4px #cf2cb9
+}
+
+.exp-card {
+  background-color: rgb(215, 216, 221);
+  text-align: center;
+  border: rgb(73, 71, 71) solid 1px;
+  padding: 1rem;
+  height: auto;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px #6AFA9F
 }
 
 .test {

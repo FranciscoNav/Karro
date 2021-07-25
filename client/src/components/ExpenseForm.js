@@ -10,23 +10,6 @@ const ExpenseForm = ({addExp, setExpFormFlag}) => {
     const [cost, setCost] = useState("")
     const [date, setDate] = useState("")
     
-    const dropDwon = () => {
-        // Temporary until drop down is made
-        setCarToggle(true)
-    }
-
-    const addExpense = () =>{
-        fetch("/expenses",{
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body:JSON.stringify()
-        })
-        .then(r => r.json())
-        .then(data => console.log(data))
-    }
-
     const handleExpSubmit = (event) => {
         event.preventDefault()
         // if car exists will need some logic propbably
@@ -76,7 +59,7 @@ const ExpenseForm = ({addExp, setExpFormFlag}) => {
                             <option value="option 1">Option 1</option>
                             <option value="option 2">Option 2</option>
                         </select>
-                        <h5 className='form-title' onClick={dropDwon}>Can't find your car above? Click here</h5>
+                        <h5 className='form-title' onClick={() =>setCarToggle(true)}>Can't find your car above? Click here</h5>
                     </div>}
                 <h3 className='form-title'>Enter an expense related to this car:</h3>
                 <label>Name</label>

@@ -30,17 +30,17 @@ const CarList = () => {
         })
         .then(r => r.json())
         .then(data => {
+            debugger
             if (data.errors){
                 alert("Please fill out the form completely. There should be at least one character in each text box.");
             }else{
-                setCars([...cars, data])
+                setCars([...cars, data.car])
                 setExpFormFlag(false)
-                console.log("else", data.error)
             }
         })
     }
 
-    const carList = cars.map( c => <CarCard  year={c.year} make={c.make} model={c.model} id={c.id}/>)
+    const carList = cars.map( c => <CarCard key={c.id} car={c}/>)
 
     return(
         <div>
@@ -48,6 +48,8 @@ const CarList = () => {
             {carList}
             <br/>
             {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
+            <br/>
+            <br/>
         </div>
     )
 }

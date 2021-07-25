@@ -9,7 +9,6 @@ class CarsController < ApplicationController
 
     def create
         user = User.find_by(id: session[:user_id])
-        # byebug
         car = user.cars.create(car_params)
         if car
             render json: car, status: :created

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import ExpenseCard from './ExpenseCard'
 
 const Expenses = (props) => {
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState("")
-    // const [carFormFlag, setCarFormFlag] = useState(false)
 
     useEffect(() => {
         fetch(`/cars/${props.match.params.car_id}/expenses`)
@@ -18,10 +18,28 @@ const Expenses = (props) => {
           })
     }, []);
 
-    const expList = expenses.map( e => <p>{e.name} ${e.cost} {e.date}</p>)
+    const editExp=(exp,id)=>{
+        fetch(`/cars/${props.match.params.car_id}/expenses/${id}`,{
+            method: "PATCH",
+            headers:{
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body:JSON.stringify(exp)
+          })
+          .then(resp => resp.json())
+          .then(data => {
+            console.log(data)
+            // setExpenses(data) 
+            // finish this sunday
+          })
+    }
+
+    const expList = expenses.map( e => <ExpenseCard key={e.id} expense={e} editExp={editExp}/>)
 
     return (
         <div>
+            <h2>All Related Expenses</h2>
             {expList}
         </div>
     )

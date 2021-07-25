@@ -24,7 +24,7 @@ const Signup = ({loginUser}) => {
 
     return (
         <div>
-            <form className="sign-up" onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 <label> Username:</label>
                 <br/>
                 <input type="text" id="username" value={username} onChange={(e) => setUserName(e.target.value)}></input>

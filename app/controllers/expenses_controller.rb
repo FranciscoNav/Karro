@@ -3,16 +3,20 @@ class ExpensesController < ApplicationController
 
     def index
         user = User.find_by(id: session[:user_id])
-        expenses = user.expenses
-        render json: expenses
+        if params[:car_id]
+            car = user.cars.find(params[:car_id])
+            expenses = car.expenses
+        else
+            expenses = user.expenses
+        end
+        render json: expenses, include: :car
     end
 
     def create
         user = User.find_by(id: session[:user_id])
-        # byebug
         expense = user.expenses.create(expense_params)
         if expense.valid?
-            render json: expense, status: :created
+            render json: expense, include: :car, status: :created
         else
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
@@ -60,3 +64,4 @@ class ExpensesController < ApplicationController
         return render json: {error: "unauthorized" }, status: :unauthorized unless session.include? :user_id
     end
 end
+
