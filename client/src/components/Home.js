@@ -8,10 +8,7 @@ const Home = (props) => {
             <div>
                 <h1>Hello {props.user.name} welcom to Karro !</h1>
                 <br/>
-                <Link to="/cars">
-                    <button className="button">View Vehicles</button>
-                </Link>
-                <br/>
+                <p>Add information about the website here</p>
                 <br/>
             </div>
         )

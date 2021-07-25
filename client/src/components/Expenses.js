@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ExpenseCard from './ExpenseCard'
+import { Link } from 'react-router-dom'
 
 const Expenses = (props) => {
     const [expenses, setExpenses] = useState([])
@@ -29,9 +30,8 @@ const Expenses = (props) => {
           })
           .then(resp => resp.json())
           .then(data => {
-            console.log(data)
-            // setExpenses(data) 
-            // finish this sunday
+            setExpenses(data)
+            //Fix issue 
           })
     }
 

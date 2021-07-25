@@ -30,7 +30,6 @@ const CarList = () => {
         })
         .then(r => r.json())
         .then(data => {
-            debugger
             if (data.errors){
                 alert("Please fill out the form completely. There should be at least one character in each text box.");
             }else{
