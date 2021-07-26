@@ -3,6 +3,7 @@ class CarsController < ApplicationController
 
     def index
         user = User.find_by(id: session[:user_id])
+        # cars = Car.all
         cars = user.cars
         render json: cars
     end

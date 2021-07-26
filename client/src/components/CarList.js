@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import CarCard from './CarCard';
 import ExpenseForm from './ExpenseForm'
 
-const CarList = () => {
+const CarList = (props) => {
     const [cars, setCars] = useState([])
     const [error, setError] = useState("")
     const [expFormFlag, setExpFormFlag] = useState(false)
 
+    // delete use props.user.id to match to correct car
     useEffect(() => {
         fetch("/cars")
           .then((r) => r.json())
@@ -20,13 +21,13 @@ const CarList = () => {
           })
     }, []);
 
-    const addExp = (exp) =>{
+    const addExp = (car) =>{
         fetch("/expenses",{
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
-            body:JSON.stringify(exp)
+            body:JSON.stringify(car)
         })
         .then(r => r.json())
         .then(data => {
@@ -46,7 +47,7 @@ const CarList = () => {
             <h2>Your Vehicles</h2>
             {carList}
             <br/>
-            {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
+            {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExp={addExp} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
             <br/>
             <br/>
         </div>

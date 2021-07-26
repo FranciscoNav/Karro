@@ -1,40 +1,45 @@
 import React, { useState } from 'react'
 
-const ExpenseForm = ({addExp, setExpFormFlag}) => {
+const ExpenseForm = ({addExp, setExpFormFlag, cars}) => {
     const [make, setMake] = useState("")
     const [model, setModel] = useState("")
     const [year, setYear] = useState("")
     const [carToggle, setCarToggle] = useState(false)
+    const [selectedCar, setSelectedCar] = useState("")
 
     const [name, setName] = useState("")
     const [cost, setCost] = useState("")
     const [date, setDate] = useState("")
     
+    
     const handleExpSubmit = (event) => {
         event.preventDefault()
-        // if car exists will need some logic propbably
-        // addExpense({
-        //     name: name,
-        //     cost: model,
-        //     date: date,
-        //     car_id: car_id
-        // })
         
-        addExp({
-            expense:{
-                name: name,
-                cost: cost,
-                date: date,
-                car_attributes: {
-                    make: make,
-                    model: model,
-                    year: year,
+        if (carToggle==false){
+            addExp({
+                    name: name,
+                    cost: cost,
+                    date: date,
+                    car_id: selectedCar
+                })
+        }else{
+            addExp({
+                expense:{
+                    name: name,
+                    cost: cost,
+                    date: date,
+                    car_attributes: {
+                        make: make,
+                        model: model,
+                        year: year,
+                    }
                 }
-            }
-        })
-
+            })
+        }
         setExpFormFlag(false)
     }
+
+    const allCars = cars.map(c => <option value={c.id}>{c.make} {c.model} {c.year}</option> )
 
     return (
         <div>
@@ -55,9 +60,9 @@ const ExpenseForm = ({addExp, setExpFormFlag}) => {
                     </div>
                     : 
                     <div>
-                        <select name="selectList" id="selectList">
-                            <option value="option 1">Option 1</option>
-                            <option value="option 2">Option 2</option>
+                        <select name="selectList" onChange={(e)=> setSelectedCar(e.target.value)}>
+                            <option>Select from existing cars</option>
+                            {allCars}
                         </select>
                         <h5 className='form-title' onClick={() =>setCarToggle(true)}>Can't find your car above? Click here</h5>
                     </div>}
