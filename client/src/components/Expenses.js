@@ -30,8 +30,8 @@ const Expenses = (props) => {
           })
           .then(resp => resp.json())
           .then(data => {
-            // debugger
-            setExpenses(data)
+            const updatedExp = expenses.map(e => e.id !=data.id ? e : data)
+            setExpenses(updatedExp)
           })
     }
 

@@ -40,7 +40,6 @@ class ExpensesController < ApplicationController
     def update
         user = User.find_by(id: session[:user_id])
         expense = user.expenses.find_by(id: params[:id])
-        # Edit form not working because it's trying to edit the car too?
         if expense
             expense.update(expense_params)
             render json: expense
