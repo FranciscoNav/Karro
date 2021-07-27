@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import CarCard from './CarCard';
 import ExpenseForm from './ExpenseForm'
 
-const CarList = (props) => {
+const CarList = () => {
     const [cars, setCars] = useState([])
     const [error, setError] = useState("")
     const [expFormFlag, setExpFormFlag] = useState(false)
 
-    // delete use props.user.id to match to correct car
     useEffect(() => {
         fetch("/cars")
           .then((r) => r.json())
