@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ExpenseCard from './ExpenseCard'
 import { Link } from 'react-router-dom'
+import ExpenseForm from './ExpenseForm'
 
 const Expenses = (props) => {
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState("")
+    const [expFormFlag, setExpFormFlag] = useState(false)
+
 
     useEffect(() => {
         fetch(`/cars/${props.match.params.car_id}/expenses`)
@@ -41,6 +44,7 @@ const Expenses = (props) => {
         <div>
             <h2>All Related Expenses</h2>
             {expList}
+            {expFormFlag ? <ExpenseForm idFromExp={props.match.params.car_id}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add New Expense</button>}
         </div>
     )
 }
