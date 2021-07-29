@@ -5,9 +5,9 @@ import ExpenseForm from './ExpenseForm'
 
 const Expenses = (props) => {
   const [expenses, setExpenses] = useState([])
-  const [error, setError] = useState("")
   const [expFormFlag, setExpFormFlag] = useState(false)
-
+  const [error, setError] = useState("")
+  const [expTotal, setExpTotal] = useState(0)
 
   useEffect(() => {
     fetch(`/cars/${props.match.params.car_id}/expenses`)
@@ -15,9 +15,9 @@ const Expenses = (props) => {
     .then(data => {
       console.log(`fetch all expenses`, data)
       if(data.error){
-          setError(data.error)
+        setError(data.error)
       }else{
-          setExpenses(data)
+        setExpenses(data)
       }
     })
   },[]);
@@ -54,6 +54,7 @@ const Expenses = (props) => {
         setExpenses([...expenses, data])
         setExpFormFlag(false)
       }
+
     })
   }
 
@@ -70,6 +71,12 @@ const Expenses = (props) => {
     })
   }
 
+  const totalCostCalc=()=>{
+    const findPrice = expenses.map(exp => exp.cost)
+    const totalCost = findPrice.reduce((accumulator, currentValue) => accumulator+ currentValue)
+    setExpTotal(totalCost)
+  }
+
   const expList = expenses.map( e => <ExpenseCard key={e.id} expense={e} editExp={editExp} delExpense={delExpense}/>)
 
   return (
@@ -77,6 +84,11 @@ const Expenses = (props) => {
           <h2>All Related Expenses</h2>
           {expList}
           {expFormFlag ? <ExpenseForm idFromExp={props.match.params.car_id} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add New Expense - NOT WORKING</button>}
+          <br/>
+          <br/>
+          <hr/>
+          <h3>${expTotal}</h3>
+          <button onClick={totalCostCalc}>Calculate total Cost</button>
       </div>
   )
 }
