@@ -27,7 +27,8 @@ class ExpensesController < ApplicationController
         else
             # byebug
             car = user.cars.find_by(id: params[:car_id])
-            expense = car.expenses.create(expense_params)
+            new_expense = car.expenses.create(expense_params)
+            expense = user.expenses << new_expense
             render json: expense, status: :created
         end
     end
