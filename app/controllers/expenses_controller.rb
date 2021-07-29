@@ -21,9 +21,14 @@ class ExpensesController < ApplicationController
             else
                 render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
             end
-        else
+        elsif expense_params[:car_id]
             expense = user.expenses.create(name: expense_params[:name], cost: expense_params[:cost], date: expense_params[:date], car_id: expense_params[:car_id])
             render json: expense, include: :car, status: :created
+        else
+            # byebug
+            car = user.cars.find_by(id: params[:car_id])
+            expense = car.expenses.create(expense_params)
+            render json: expense, status: :created
         end
     end
  

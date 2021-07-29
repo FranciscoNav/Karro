@@ -35,8 +35,9 @@ class CarsController < ApplicationController
     def destroy
         user = User.find_by(id: session[:user_id])
         car = user.cars.find_by(id: params[:id])
+        exps = car.expenses
         if car
-            car.destroy
+            exps.destroy_all 
             head :no_content   
         else
             render json: { error: "Not Authorized"}, status: :unauthorized

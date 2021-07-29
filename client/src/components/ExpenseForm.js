@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const ExpenseForm = ({addExp, setExpFormFlag, cars, idFromExp}) => {
+const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) => {
     const [make, setMake] = useState("")
     const [model, setModel] = useState("")
     const [year, setYear] = useState("")
@@ -24,7 +24,7 @@ const ExpenseForm = ({addExp, setExpFormFlag, cars, idFromExp}) => {
           })
     }, []);
     
-    const handleExpSubmit = (event) => {
+    const handleExpCarSubmit = (event) => {
         event.preventDefault()
         const ownedCars = cars.map(c => c.id)
 
@@ -32,14 +32,14 @@ const ExpenseForm = ({addExp, setExpFormFlag, cars, idFromExp}) => {
             alert("You already own this car");
         }else{
             if (carToggle===false){
-                addExp({
-                        name: name,
-                        cost: cost,
-                        date: date,
-                        car_id: selectedCar
-                    })
+                addExpWithCar({
+                    name: name,
+                    cost: cost,
+                    date: date,
+                    car_id: selectedCar
+                })
             }else{
-                addExp({
+                addExpWithCar({
                     expense:{
                         name: name,
                         cost: cost,
@@ -55,6 +55,16 @@ const ExpenseForm = ({addExp, setExpFormFlag, cars, idFromExp}) => {
             setExpFormFlag(false)
         }
     }
+
+    const handleExpSubmit=(event)=>{
+        event.preventDefault()
+        addExp({
+            name: name,
+            cost: cost,
+            date: date
+            // car_id: idFromExp
+        })
+    }
     
     const dropDownCars = allCars.map(c => <option value={c.id}>{c.make} {c.model} {c.year}</option> )
 
@@ -63,11 +73,10 @@ const ExpenseForm = ({addExp, setExpFormFlag, cars, idFromExp}) => {
             <div>
                 <form className="form" onSubmit={handleExpSubmit}>
                     <div>
-                        <select name="selectList" onChange={(e)=> setSelectedCar(e.target.value)}>
+                        <select name="selectList" >
                             {dropDownCars}
                         </select>
                     </div>
-
                     <h3 className='form-title'>Enter an expense related to this car:</h3>
                     <label>What was the Expense?</label>
                     <br/>
@@ -91,7 +100,7 @@ const ExpenseForm = ({addExp, setExpFormFlag, cars, idFromExp}) => {
     }else{
         return (
             <div>
-                <form className="form" onSubmit={handleExpSubmit}>
+                <form className="form" onSubmit={handleExpCarSubmit}>
                     {carToggle? 
                         <div>
                             <label>Make</label>
@@ -135,7 +144,6 @@ const ExpenseForm = ({addExp, setExpFormFlag, cars, idFromExp}) => {
             </div>
         )
     }
-
 }
 
 export default ExpenseForm;

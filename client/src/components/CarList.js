@@ -20,7 +20,7 @@ const CarList = () => {
           })
     }, []);
 
-    const addExp = (car) =>{
+    const addExpWithCar = (car) =>{
         fetch("/expenses",{
             method: 'POST',
             headers: {
@@ -39,14 +39,27 @@ const CarList = () => {
         })
     }
 
-    const carList = cars.map( c => <CarCard key={c.id} car={c}/>)
+    const removeCar = (id) =>{
+        fetch(`/cars/${id}`,{
+          method: "DELETE",
+          headers:{
+            "Content-Type": "application/json"
+          },
+        })
+        .then(() => {
+            const carAfterDel = cars.filter(e => e.id !=id)
+            setCars(carAfterDel)
+        })
+    }
+
+    const carList = cars.map( c => <CarCard key={c.id} car={c} removeCar={removeCar}/>)
 
     return(
         <div>
             <h2>Your Vehicles</h2>
             {carList}
             <br/>
-            {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExp={addExp} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
+            {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExpWithCar={addExpWithCar} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
             <br/>
             <br/>
         </div>
