@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ExpenseCard from './ExpenseCard'
-import { Link } from 'react-router-dom'
 import ExpenseForm from './ExpenseForm'
 
 const Expenses = (props) => {
@@ -50,7 +49,6 @@ const Expenses = (props) => {
       if (data.errors){
         alert("Cisco Add error");
       }else{
-        debugger
         setExpenses([...expenses, data])
         setExpFormFlag(false)
       }
@@ -58,16 +56,31 @@ const Expenses = (props) => {
   }
 
   const delExpense = (id) =>{
-    fetch(`/cars/${props.match.params.car_id}/expenses/${id}`,{
-      method: "DELETE",
-      headers:{
-        "Content-Type": "application/json"
-      },
-    })
-    .then(() => {
+    if(expenses.length == 1){
+      if (window.confirm('Are you sure? Removing the last expense will also remove the car from "Your Vehicles".')){
+        fetch(`/cars/${props.match.params.car_id}/expenses/${id}`,{
+          method: "DELETE",
+          headers:{
+            "Content-Type": "application/json"
+          },
+        })
+        .then(() => {
+          const expAfterDel = expenses.filter(e => e.id !=id)
+          setExpenses(expAfterDel)
+        })
+      }
+    }else{
+      fetch(`/cars/${props.match.params.car_id}/expenses/${id}`,{
+        method: "DELETE",
+        headers:{
+          "Content-Type": "application/json"
+        },
+      })
+      .then(() => {
         const expAfterDel = expenses.filter(e => e.id !=id)
         setExpenses(expAfterDel)
-    })
+      })
+    }
   }
 
   const totalCostCalc=()=>{
@@ -79,15 +92,15 @@ const Expenses = (props) => {
   const expList = expenses.map( e => <ExpenseCard key={e.id} expense={e} editExp={editExp} delExpense={delExpense}/>)
 
   return (
-      <div>
-          <h2>All Related Expenses</h2>
-          {expList}
-          {expFormFlag ? <ExpenseForm idFromExp={props.match.params.car_id} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add New Expense</button>}
-          <br/>
-          <br/>
-          <hr/>
-          <h3>You have spent a total of ${totalCostCalc()} on this car</h3>
-      </div>
+    <div>
+      <h2>All Related Expenses</h2>
+      {expList}
+      {expFormFlag ? <ExpenseForm idFromExp={props.match.params.car_id} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add New Expense</button>}
+      <br/>
+      <br/>
+      <hr/>
+      <h3>You have spent a total of ${totalCostCalc()} on this car</h3>
+    </div>
   )
 }
 
