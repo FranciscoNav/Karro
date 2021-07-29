@@ -50,7 +50,8 @@ const Expenses = (props) => {
       if (data.errors){
         alert("Cisco Add error");
       }else{
-        setExpenses(data)
+        debugger
+        setExpenses([...expenses, data])
         setExpFormFlag(false)
       }
     })

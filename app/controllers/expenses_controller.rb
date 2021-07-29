@@ -25,11 +25,10 @@ class ExpensesController < ApplicationController
             expense = user.expenses.create(name: expense_params[:name], cost: expense_params[:cost], date: expense_params[:date], car_id: expense_params[:car_id])
             render json: expense, include: :car, status: :created
         else
-            # byebug
             car = user.cars.find_by(id: params[:car_id])
             new_expense = car.expenses.create(expense_params)
-            expense = user.expenses << new_expense
-            render json: expense, status: :created
+            user.expenses << new_expense
+            render json: new_expense
         end
     end
  
