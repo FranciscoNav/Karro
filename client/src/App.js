@@ -15,7 +15,6 @@ function App() {
   const history = useHistory()
 
   useEffect(() => {
-    // auto-login
     fetch('/me')
     .then(response => {
       if(response.ok) {
@@ -33,7 +32,7 @@ function App() {
   const LoginUser= (u) => {
     if(u.error === "Invalid username or password"){
       setLoggedIn(false)
-      alert(loginError);
+      alert(`${loginError} Please enter the correct username and password`);
     }else if(u.error === "Internal Server Error"){
       setLoggedIn(false)
       alert("Please make sure the form is correct. It should include a username, and matching password(s).");

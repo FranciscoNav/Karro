@@ -54,16 +54,25 @@ const CarList = () => {
 
     const carList = cars.map( c => <CarCard key={c.id} car={c} removeCar={removeCar}/>)
 
-    return(
-        <div>
-            <h2>Your Vehicles</h2>
-            {carList}
-            <br/>
-            {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExpWithCar={addExpWithCar} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
-            <br/>
-            <br/>
-        </div>
-    )
+    if(error ===''){
+        return(
+            <div>
+                <h2>Your Vehicles</h2>
+                {carList}
+                <br/>
+                {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExpWithCar={addExpWithCar} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
+                <br/>
+                <br/>
+            </div>
+        )
+    }else{
+        return(
+            <div>
+                <h2>{error} - Please Sign up or Login</h2>
+            </div>
+        )
+    }
+
 }
 
 export default CarList;

@@ -3,7 +3,6 @@ import React from 'react'
 const Home = (props) => {
 
     if (props.loggedIn){
-        console.log('can put code before return')
         return (
             <div>
                 <h1>Hello {props.user.name} welcom to Karro !</h1>

@@ -91,17 +91,27 @@ const Expenses = (props) => {
 
   const expList = expenses.map( e => <ExpenseCard key={e.id} expense={e} editExp={editExp} delExpense={delExpense}/>)
 
-  return (
-    <div>
-      <h2>All Related Expenses</h2>
-      {expList}
-      {expFormFlag ? <ExpenseForm idFromExp={props.match.params.car_id} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add New Expense</button>}
-      <br/>
-      <br/>
-      <hr/>
-      <h3>You have spent a total of ${totalCostCalc()} on this car</h3>
-    </div>
-  )
+
+  if(error===''){
+    return (
+      <div>
+        <h2>All Related Expenses</h2>
+        {expList}
+        {expFormFlag ? <ExpenseForm idFromExp={props.match.params.car_id} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add New Expense</button>}
+        <br/>
+        <br/>
+        <hr/>
+        <h3>You have spent a total of ${totalCostCalc()} on this car</h3>
+      </div>
+    )
+  }else{
+    return (
+      <div>
+        <h2>{error} - Please Sign up or Login</h2>
+      </div>
+    )
+  }
 }
 
 export default Expenses;
+
