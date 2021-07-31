@@ -52,7 +52,7 @@ const Explore = () => {
       <div>
         <h1>Explore what other people are paying</h1>
         <select name="selectList" onChange={(e)=> setSelectedCar(e.target.value)} >
-          <option value={0}>Select from existing cars</option>
+          <option value={0}>Select a car from our database</option>
           {dropDownCars}
         </select>
         <br/>

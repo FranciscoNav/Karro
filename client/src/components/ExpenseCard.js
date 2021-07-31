@@ -11,8 +11,8 @@ const ExpenseCard = (props) => {
     return (
         <div className='exp-card'>
             <h3>{props.expense.name} for ${props.expense.cost} on {props.expense.date}</h3>
-            {editFormFlag? <EditForm editExp={props.editExp} expense={props.expense} setEditFormFlag={setEditFormFlag}/> : <button onClick={()=> setEditFormFlag(true)}>Edit</button>}
-            <button onClick={handleClick}>Delete</button> 
+            {editFormFlag? <EditForm editExp={props.editExp} expense={props.expense} setEditFormFlag={setEditFormFlag}/> : <button onClick={()=> setEditFormFlag(true)} className='exp-card-button'>Edit</button>}
+            <button onClick={handleClick} className='delete-button'>Delete</button> 
         </div>
     )
 }
