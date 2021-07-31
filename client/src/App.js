@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import CarList from './components/CarList';
 import Expenses from './components/Expenses';
+import Explore from './components/Explore';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -64,6 +65,7 @@ function App() {
         <Route exact path="/login" render={routerProps => <Login {...routerProps} loginUser={LoginUser} />}/>
         <Route exact path="/cars" render={routerProps => <CarList {...routerProps} user={user} loggedIn={loggedIn}/>}/>
         <Route path="/cars/:car_id/expenses"  component={Expenses}/>
+        <Route path="/cars/all"  component={Explore}/>
       </Switch>
       
     </div>

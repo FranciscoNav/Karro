@@ -7,7 +7,9 @@ class ExpensesController < ApplicationController
             car = user.cars.find(params[:car_id])
             expenses = car.expenses.where(user_id: user.id)
         else
-            expenses = user.expenses
+            # I dont think we need this part
+            # byebug
+            expenses = Expense.all
         end
         render json: expenses
     end

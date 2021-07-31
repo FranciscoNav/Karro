@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) => {
+    const [allCars, setAllCars] = useState([])
+    // issue with stuff from above
     const [make, setMake] = useState("")
     const [model, setModel] = useState("")
     const [year, setYear] = useState("")
     const [carToggle, setCarToggle] = useState(false)
     const [selectedCar, setSelectedCar] = useState(0)
-    const [allCars, setAllCars] = useState([])
     const [name, setName] = useState("")
     const [cost, setCost] = useState("")
     const [date, setDate] = useState("")
@@ -62,7 +63,6 @@ const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) =
             name: name,
             cost: cost,
             date: date
-            // car_id: idFromExp
         })
     }
     

@@ -23,6 +23,7 @@ const Navbar = (props) => {
                 <br/>
                 <NavLink to='/' exact style={link} activeStyle={active}>Home</NavLink>
                 <NavLink to="/cars" exact style={link} activeStyle={active}>Your Vehicles</NavLink>
+                <NavLink to="/cars/all" exact style={link} activeStyle={active}>Explore What Others Pay</NavLink>
                 <button className="logout-button" onClick={props.logoutUser}>Logout -Nav</button>
             </div>
         )

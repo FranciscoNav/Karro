@@ -91,7 +91,6 @@ const Expenses = (props) => {
 
   const expList = expenses.map( e => <ExpenseCard key={e.id} expense={e} editExp={editExp} delExpense={delExpense}/>)
 
-
   if(error===''){
     return (
       <div>

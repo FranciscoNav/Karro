@@ -9,7 +9,7 @@ class CarsController < ApplicationController
 
     def indexAll
         cars = Car.all
-        render json: cars
+        render json: cars, include: :expenses
     end
 
     def create

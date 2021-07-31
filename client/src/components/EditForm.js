@@ -6,7 +6,6 @@ const EditForm = (props) => {
     const [date, setDate] = useState("")
     const [id, setId] = useState("")
 
-
     useEffect(() => {
         setName(props.expense.name)
         setCost(props.expense.cost)
