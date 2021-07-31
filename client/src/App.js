@@ -67,7 +67,6 @@ function App() {
         <Route path="/cars/:car_id/expenses"  component={Expenses}/>
         <Route path="/cars/all"  component={Explore}/>
       </Switch>
-      
     </div>
   );
 }

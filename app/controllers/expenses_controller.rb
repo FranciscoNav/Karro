@@ -8,7 +8,6 @@ class ExpensesController < ApplicationController
             expenses = car.expenses.where(user_id: user.id)
         else
             # I dont think we need this part
-            # byebug
             expenses = Expense.all
         end
         render json: expenses

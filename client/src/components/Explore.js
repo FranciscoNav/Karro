@@ -21,7 +21,7 @@ const Explore = () => {
 
   const displaySelCar=()=>{
     if(selectedCar == 0){
-      console.log('Add instructions?')
+      return <p>add instructions here</p>
     }else{
       const findCar = cars.filter(c=> c.id ==selectedCar)
       const carTitle = findCar.map(c => <h3>All user expenses for the {c.year} {c.make} {c.model}</h3>)
@@ -33,9 +33,9 @@ const Explore = () => {
         }else if(val.name.toLowerCase().includes(searchTerm.toLowerCase())){
           return val
         }
-      }).map((val, key) => <h4 key={key}> {val.name} for ${val.cost} on {val.name}</h4>)
+      }).map((val, key) => <h4 key={key} className='exp-card'> {val.name} for ${val.cost} on {val.name}</h4>)
 
-      const showCarAndExp = <div>
+      const showCarAndExp = <div className='card'>
         {carTitle}
         <input type="text" placeholder="Search..." onChange={e => setSearchTerm(e.target.value)}/>
         {displayExp}

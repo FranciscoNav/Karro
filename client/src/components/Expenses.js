@@ -16,6 +16,7 @@ const Expenses = (props) => {
         setError(data.error)
       }else{
         setExpenses(data)
+        // debugger
       }
     })
   },[]);
@@ -94,7 +95,7 @@ const Expenses = (props) => {
   if(error===''){
     return (
       <div>
-        <h2>All Related Expenses</h2>
+        <h2>All Expenses for your {props.location.state.year} {props.location.state.make} {props.location.state.model}</h2>
         {expList}
         {expFormFlag ? <ExpenseForm idFromExp={props.match.params.car_id} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add New Expense</button>}
         <br/>
