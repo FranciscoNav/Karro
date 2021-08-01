@@ -57,7 +57,7 @@ const CarList = () => {
     if(error ===''){
         return(
             <div>
-                <h2>Your Vehicles</h2>
+                <h1>Your Vehicles</h1>
                 {carList}
                 <br/>
                 {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExpWithCar={addExpWithCar} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}

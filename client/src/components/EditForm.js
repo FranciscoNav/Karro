@@ -42,7 +42,7 @@ const EditForm = (props) => {
                 <input type="date" id="date" value={date} onChange={(e) => setDate(e.target.value)}></input>
                 <br/>
                 <br/>
-                <input className="submit-button" type="submit"/>
+                <input className="button" type="submit"/>
             </form>
         </div>
     )

@@ -19,9 +19,9 @@ const CarCard = (props) => {
                     year:props.car.year
                 }}
             }>
-                <button>View Related Expense</button>
+                <button className="button">View Related Expense</button>
             </Link>
-            <button onClick={handleClick}>Remove Car</button>
+            <button onClick={handleClick} className='delete-button'>Remove Car</button>
             <br/>
         </div>
     )

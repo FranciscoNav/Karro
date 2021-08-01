@@ -5,7 +5,7 @@ const Home = (props) => {
     if (props.loggedIn){
         return (
             <div>
-                <h1>Hello {props.user.name} welcom to Karro !</h1>
+                <h1>Hello {props.user.name} Welcome to Karro !</h1>
                 <br/>
                 <p>Add information about the website here</p>
                 <br/>
