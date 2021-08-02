@@ -2,20 +2,6 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom'
 
 const Navbar = (props) => {
-    // const link = {
-    //     border: 'grey solid 1px',
-    //     width:'100px',
-    //     padding:'10px',
-    //     margin: '0 6px 6px',
-    //     textDecoration: 'none',
-    //     color: 'white',
-    //     background:'#3c6ae9',
-    //   }
-    
-    //   const active = {
-    //     background: "rgba(187, 189, 194, 0.664)",
-    //     border: 'black solid 1px'
-    //   }
 
     if (props.loggedIn){
         return (
@@ -39,7 +25,7 @@ const Navbar = (props) => {
                 <br/>
                 <div className='nav'>
                     <Link to="/signup" >
-                        <button className='button'>Signup</button>
+                        <button className='button'>Sign up</button>
                     </Link>
                     <Link to="/login" >
                         <button className='button'>Login</button>
