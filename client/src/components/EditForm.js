@@ -43,6 +43,7 @@ const EditForm = (props) => {
                 <br/>
                 <br/>
                 <input className="button" type="submit"/>
+                <button className='button' onClick={() => props.setEditFormFlag(false) }>Back</button>
             </form>
         </div>
     )

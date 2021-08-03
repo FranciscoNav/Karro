@@ -18,4 +18,3 @@ const ExpenseCard = (props) => {
 }
 
 export default ExpenseCard;
-

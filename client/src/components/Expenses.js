@@ -48,6 +48,7 @@ const Expenses = (props) => {
     .then(data => {
       if (data.errors){
         alert("Cisco Add error");
+        debugger
       }else{
         setExpenses([...expenses, data])
         setExpFormFlag(false)
@@ -113,4 +114,3 @@ const Expenses = (props) => {
 }
 
 export default Expenses;
-

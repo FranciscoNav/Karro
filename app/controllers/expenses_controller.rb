@@ -3,13 +3,8 @@ class ExpensesController < ApplicationController
 
     def index
         user = User.find_by(id: session[:user_id])
-        if params[:car_id]
-            car = user.cars.find(params[:car_id])
-            expenses = car.expenses.where(user_id: user.id)
-        else
-            # I dont think we need this part
-            expenses = Expense.all
-        end
+        car = user.cars.find(params[:car_id])
+        expenses = car.expenses.where(user_id: user.id)
         render json: expenses
     end
 
@@ -30,16 +25,6 @@ class ExpensesController < ApplicationController
             new_expense = car.expenses.create(expense_params)
             user.expenses << new_expense
             render json: new_expense
-        end
-    end
- 
-    def show
-        user = User.find_by(id: session[:user_id])
-        expense = user.expenses.find_by(id: params[:id])
-        if expense
-            render json: expense
-        else
-            render json: { error: "Not Authorized"}, status: :unauthorized
         end
     end
 
@@ -75,4 +60,3 @@ class ExpensesController < ApplicationController
         return render json: {error: "unauthorized" }, status: :unauthorized unless session.include? :user_id
     end
 end
-

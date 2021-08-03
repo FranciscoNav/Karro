@@ -38,9 +38,8 @@ const Explore = () => {
       const showCarAndExp = <div className='card'>
         {carTitle}
         <input type="text" placeholder="Search..." onChange={e => setSearchTerm(e.target.value)}/>
-        {displayExp}
+        {displayExp.length > 0 ? displayExp : <h3>No results found</h3>}
       </div>
-
       return showCarAndExp
     }
   }

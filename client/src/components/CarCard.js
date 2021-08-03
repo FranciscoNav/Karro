@@ -28,7 +28,3 @@ const CarCard = (props) => {
 }
 
 export default CarCard;
-
-
-
-{/* <Route path="/cars/:car_id/expenses"  render={routerProps => <Expenses {...routerProps} id={props.id} make={props.make} /> }  /> */}

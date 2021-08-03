@@ -55,16 +55,29 @@ const CarList = () => {
     const carList = cars.map( c => <CarCard key={c.id} car={c} removeCar={removeCar}/>)
 
     if(error ===''){
-        return(
-            <div>
-                <h1>Your Vehicles</h1>
-                {carList}
-                <br/>
-                {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExpWithCar={addExpWithCar} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
-                <br/>
-                <br/>
-            </div>
-        )
+        if(cars.length > 0){
+            return(
+                <div>
+                    <h1>Your Vehicles</h1>
+                    {carList}
+                    <br/>
+                    {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExpWithCar={addExpWithCar} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
+                    <br/>
+                    <br/>
+                </div>
+            )
+        }else{
+            return(
+                <div>
+                    <h1>Your Vehicles</h1>
+                    <p>You currently do not have any vehicles selected. Please click the button below to find, or add a new car.</p>
+                    <br/>
+                    {expFormFlag ? <ExpenseForm setExpFormFlag={setExpFormFlag} addExpWithCar={addExpWithCar} cars={cars}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add Expense to Different Car</button>}
+                    <br/>
+                    <br/>
+                </div>
+            )
+        }
     }else{
         return(
             <div>

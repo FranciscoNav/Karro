@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) => {
     const [allCars, setAllCars] = useState([])
-    // issue with stuff from above
     const [make, setMake] = useState("")
     const [model, setModel] = useState("")
     const [year, setYear] = useState("")
@@ -78,7 +77,7 @@ const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) =
                         </select>
                     </div>
                     <h3 className='form-title'>Enter an expense related to this car:</h3>
-                    <label>What was the Expense?</label>
+                    <label>What was the expense?</label>
                     <br/>
                     <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)}></input>
                     <br/>
@@ -114,6 +113,9 @@ const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) =
                             <label>Year</label>
                             <br/>
                             <input type="number" id="name" value={year} onChange={(e) => setYear(e.target.value)}></input>
+                            <br/>
+                            <br/>
+                            <button className='button' onClick={() =>setCarToggle(false) }>Back to drop-down menu</button>
                         </div>
                         : 
                         <div>
@@ -124,7 +126,7 @@ const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) =
                             <h5 className='form-title' onClick={() =>setCarToggle(true)}>Can't find your car above? Click here</h5>
                         </div>}
                     <h3 className='form-title'>Enter an expense related to this car:</h3>
-                    <label>What was the Expense?</label>
+                    <label>What was the expense?</label>
                     <br/>
                     <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)}></input>
                     <br/>

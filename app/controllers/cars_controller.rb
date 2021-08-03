@@ -21,16 +21,6 @@ class CarsController < ApplicationController
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
     end
- 
-    def show
-        user = User.find_by(id: session[:user_id])
-        car = user.cars.find_by(id: params[:id])
-        if car
-            render json: car
-        else
-            render json: { error: "Not Authorized"}, status: :unauthorized
-        end
-    end
 
     def destroy
         user = User.find_by(id: session[:user_id])
