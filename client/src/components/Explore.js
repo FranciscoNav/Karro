@@ -24,7 +24,7 @@ const Explore = () => {
       return <p>Welcome to the explore page. Here you can search for any car in our database by selecting it from the drop-down above. Once you select a car, we will display every expense from all our users for that specific car. Then you can use the search bar to filter the expenses by name. For example, if you want to see what everyone else is paying for an oil change. Simply select your car from the drop-down, and then search “oil change”.</p>
     }else{
       const findCar = cars.filter(c=> c.id ==selectedCar)
-      const carTitle = findCar.map(c => <h2>All user expenses for the {c.year} {c.make} {c.model}</h2>)
+      const carTitle = findCar.map(c => <h2>All expenses for the {c.year} {c.make} {c.model}</h2>)
       const expArray = findCar.map(c => c.expenses)
 
       const displayExp = expArray[0].filter((val) => {
@@ -33,7 +33,7 @@ const Explore = () => {
         }else if(val.name.toLowerCase().includes(searchTerm.toLowerCase())){
           return val
         }
-      }).map((val, key) => <h3 key={key} className='exp-card'> {val.name} for ${val.cost} on {val.name}</h3>)
+      }).map((e, key) => <h3 key={key} className='exp-card'> {e.name} for ${e.cost} on {e.name}</h3>)
 
       const showCarAndExp = <div className='card'>
         {carTitle}

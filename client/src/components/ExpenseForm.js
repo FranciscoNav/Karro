@@ -32,12 +32,16 @@ const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) =
             alert("You already own this car");
         }else{
             if (carToggle===false){
-                addExpWithCar({
-                    name: name,
-                    cost: cost,
-                    date: date,
-                    car_id: selectedCar
-                })
+                if(selectedCar == 0){
+                    alert("Please add or select a car.");
+                }else{
+                    addExpWithCar({
+                        name: name,
+                        cost: cost,
+                        date: date,
+                        car_id: selectedCar
+                    })
+                }
             }else{
                 addExpWithCar({
                     expense:{
