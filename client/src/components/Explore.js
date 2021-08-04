@@ -37,7 +37,7 @@ const Explore = () => {
 
       const showCarAndExp = <div className='card'>
         {carTitle}
-        <input type="text" placeholder="Search..." onChange={e => setSearchTerm(e.target.value)}/>
+        <input type="text" placeholder="Search..." className='searchBar' onChange={e => setSearchTerm(e.target.value)}/>
         {displayExp.length > 0 ? displayExp : <h3>No results found</h3>}
       </div>
       return showCarAndExp
@@ -50,7 +50,7 @@ const Explore = () => {
     return (
       <div>
         <h1>Explore What Others Are Paying</h1>
-        <select name="selectList" onChange={(e)=> setSelectedCar(e.target.value)} >
+        <select className="selectList" onChange={(e)=> setSelectedCar(e.target.value)} >
           <option value={0}>Select a car from our database</option>
           {dropDownCars}
         </select>

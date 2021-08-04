@@ -170,3 +170,11 @@ p{
 h5{
   color: red;
 }
+
+.searchBar{
+  border-radius: 10px;
+}
+
+.selectList{
+  border-radius: 10px;
+}

@@ -19,12 +19,20 @@ class ExpensesController < ApplicationController
             end
         elsif expense_params[:car_id]
             expense = user.expenses.create(name: expense_params[:name], cost: expense_params[:cost], date: expense_params[:date], car_id: expense_params[:car_id])
-            render json: expense, include: :car, status: :created
+            if expense.valid?
+                render json: expense, include: :car, status: :created
+            else
+                render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            end
         else
             car = user.cars.find_by(id: params[:car_id])
             new_expense = car.expenses.create(expense_params)
-            user.expenses << new_expense
-            render json: new_expense
+            if new_expense[:cost] == nil ||  new_expense[:name] == "" || new_expense[:date] == nil
+                render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+            else
+                user.expenses << new_expense
+                render json: new_expense
+            end 
         end
     end
 

@@ -76,7 +76,7 @@ const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) =
             <div>
                 <form className="form" onSubmit={handleExpSubmit}>
                     <div>
-                        <select name="selectList" >
+                        <select className="selectList">
                             {dropDownCars}
                         </select>
                     </div>
@@ -123,7 +123,7 @@ const ExpenseForm = ({addExpWithCar, setExpFormFlag, cars, idFromExp, addExp}) =
                         </div>
                         : 
                         <div>
-                            <select name="selectList" onChange={(e)=> setSelectedCar(e.target.value)}>
+                            <select className="selectList" onChange={(e)=> setSelectedCar(e.target.value)}>
                                 <option>Select from existing cars</option>
                                 {dropDownCars}
                             </select>

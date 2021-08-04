@@ -47,8 +47,7 @@ const Expenses = (props) => {
     .then(r => r.json())
     .then(data => {
       if (data.errors){
-        alert("Cisco Add error");
-        debugger
+        alert("Please make sure the form is complete. Name, cost, and date are required.");
       }else{
         setExpenses([...expenses, data])
         setExpFormFlag(false)
