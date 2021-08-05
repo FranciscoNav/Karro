@@ -81,7 +81,7 @@ const CarList = () => {
     }else{
         return(
             <div>
-                <h2>{error} - Please Sign up or Login</h2>
+                <h2>Error: {error}</h2>
             </div>
         )
     }

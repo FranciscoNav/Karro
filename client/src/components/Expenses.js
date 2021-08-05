@@ -20,7 +20,7 @@ const Expenses = (props) => {
     })
   },[]);
 
-  const editExp=(exp,id)=>{
+  const editExp = (exp,id) =>{
     fetch(`/cars/${props.match.params.car_id}/expenses/${id}`,{
       method: "PATCH",
       headers:{
@@ -83,10 +83,19 @@ const Expenses = (props) => {
     }
   }
 
-  const totalCostCalc=()=>{
+  const totalCostCalc = () =>{
     const findPrice = expenses.map(exp => exp.cost)
     const totalCost = findPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
     return totalCost
+  }
+
+  const title=()=>{
+    const expCar=expenses.map( e=> e.car)
+    const carYear = expCar.map(c=> c.year)
+    const carMake = expCar.map(c=> c.make)
+    const carModel = expCar.map(c=> c.model)
+    const carTitle = <h1>All Expenses for your {carYear[0]} {carMake[0]} {carModel[0]}</h1>
+    return carTitle
   }
 
   const expList = expenses.map( e => <ExpenseCard key={e.id} expense={e} editExp={editExp} delExpense={delExpense}/>)
@@ -94,7 +103,7 @@ const Expenses = (props) => {
   if(error===''){
     return (
       <div>
-        <h1>All Expenses for your {props.location.state.year} {props.location.state.make} {props.location.state.model}</h1>
+        {title()}
         {expList}
         {expFormFlag ? <ExpenseForm idFromExp={props.match.params.car_id} addExp={addExp}/> : <button className ="button" onClick={() =>setExpFormFlag(true)}>Add New Expense</button>}
         <br/>
@@ -106,7 +115,7 @@ const Expenses = (props) => {
   }else{
     return (
       <div>
-        <h2>{error} - Please Sign up or Login</h2>
+        <h2>Error: {error}</h2>
       </div>
     )
   }

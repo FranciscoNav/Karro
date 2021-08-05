@@ -11,14 +11,7 @@ const CarCard = (props) => {
         <div className='card'>
             <h2>{props.car.year} {props.car.make} {props.car.model}</h2>
             <br/>
-            <Link to={{
-                pathname:`cars/${props.car.id}/expenses`,
-                state:{
-                    make:props.car.make,
-                    model:props.car.model,
-                    year:props.car.year
-                }}
-            }>
+            <Link to={`cars/${props.car.id}/expenses`}>
                 <button className="button">View Related Expense</button>
             </Link>
             <button onClick={handleClick} className='delete-button'>Remove Car</button>

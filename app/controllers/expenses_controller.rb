@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
         user = User.find_by(id: session[:user_id])
         car = user.cars.find(params[:car_id])
         expenses = car.expenses.where(user_id: user.id)
-        render json: expenses
+        render json: expenses, include: :car
     end
 
     def create
@@ -31,7 +31,7 @@ class ExpensesController < ApplicationController
                 render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
             else
                 user.expenses << new_expense
-                render json: new_expense
+                render json: new_expense, include: :car, status: :created
             end 
         end
     end
@@ -41,7 +41,7 @@ class ExpensesController < ApplicationController
         expense = user.expenses.find_by(id: params[:id])
         if expense
             expense.update(expense_params)
-            render json: expense
+            render json: expense, include: :car
         else
             render json: { error: "Not Authorized"}, status: :unauthorized
         end

@@ -9,6 +9,7 @@ Hello and welcome to Karro. We are a car expense and maintenance tracking app. W
 
 ## Setup
 **Fork and clone this repository**.
+https://github.com/FranciscoNav/Karro.git
 
 For Front-End run:
 ```sh
@@ -22,4 +23,4 @@ rails s
 ```
 
 Additional setup notes:
-- `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
+- `rails s`: run the backend on http://localhost:3000
