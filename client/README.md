@@ -24,3 +24,6 @@ rails s
 
 Additional setup notes:
 - `rails s`: run the backend on http://localhost:3000
+
+## Demo Video
+https://youtu.be/27PdkirKVr4

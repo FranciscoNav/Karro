@@ -24,3 +24,6 @@ rails s
 Additional setup notes:
 - `rails s`: run the backend on [http://localhost:3000](http://localhost:3000)
 - `npm start --prefix client`: run the frontend on [http://localhost:4000](http://localhost:4000)
+
+## Demo Video
+https://youtu.be/27PdkirKVr4
