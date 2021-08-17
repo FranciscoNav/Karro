@@ -49,7 +49,6 @@ function App() {
       method: 'DELETE'
     })
     .then(() => {
-      console.log('logged out')
       setLoggedIn(false)
       setUser({})
     }) 

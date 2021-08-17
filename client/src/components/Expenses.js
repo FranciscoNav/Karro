@@ -11,7 +11,6 @@ const Expenses = (props) => {
     fetch(`/cars/${props.match.params.car_id}/expenses`)
     .then((r) => r.json())
     .then(data => {
-      console.log(`fetch all expenses`, data)
       if(data.error){
         setError(data.error)
       }else{

@@ -11,7 +11,6 @@ const CarList = () => {
         fetch("/cars")
           .then((r) => r.json())
           .then(data => {
-            console.log("fetch all cars", data)
             if(data.error){
                 setError(data.error)
             }else{

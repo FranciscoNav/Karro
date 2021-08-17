@@ -13,7 +13,6 @@ const Explore = () => {
       if(data.error){
         setError(data.error)
       }else{
-        console.log(`fetch all data`, data)
         setCars(data)
       }
     })
